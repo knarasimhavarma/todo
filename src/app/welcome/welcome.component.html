@@ -1,0 +1,13 @@
+<h1>
+    Welcome</h1>
+<div class="container">
+    You can manage your todos <a routerLink='/todo'>here</a>
+</div>
+
+<div class="container">
+    click here You will get customized message
+    <button (click)="getServiceWithPathVariable()" class="btn btn-success">Message</button>
+</div>
+<div class="container" *ngIf="errorMsg" style="text-align: center;color: red;">
+    Error {{errorMsg}}
+</div>

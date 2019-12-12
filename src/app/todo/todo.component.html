@@ -1,0 +1,19 @@
+<h1>Todo Update!</h1>
+<div class="alert alert-success" *ngIf="message">
+    {{message}}
+</div>
+<div class="container">
+    <fieldset class="form-group">
+        <label>Description</label>
+        <input type="text" [(ngModel)]="data.description" class="form-control" name="description" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="data.name" class="form-control" name="description" required="required">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>target Date</label>
+        <input type="date" [ngModel]="data.targetDate | date:'yyyy-MM-dd'" (ngModelChange)="data.targetDate = $event" class="form-control" name="targetDate" required="required">
+    </fieldset>
+    <button class="btn btn-success" (click)="updateTodo(data)">update</button>
+</div>
