@@ -19,15 +19,6 @@ export class WelcomeDataService {
     //console.log("Execute Hello World Bean Service");
   }
   executeServiceWithPathVariable(name) {
-    //let authHeaderString=this.basicAuthHandler();
-    //console.log(authHeaderString)
-    //let headers = new HttpHeaders({Authorization: authHeaderString});
-    //   {
-    //   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-    // });
-   // headers.set('Authorization', 'authHeaderString');
-    //headers.set('Access-Control-Allow-Origin','http://127.0.0.1:8080')
-  //  console.log(headers)
     return this.http.get<Authenticate>(`http://localhost:8080/basic/auth`);
   }
 

@@ -5,8 +5,10 @@
 </div>
 
 <div class="container">
+    
     click here You will get customized message
-    <button (click)="getServiceWithPathVariable()" class="btn btn-success">Message</button>
+    <button (click)="getServiceWithPathVariable()" class="btn btn-success">Message</button><br>
+    <div *ngIf="authenticate" class="alert alert-success">{{authenticate.message}}</div>
 </div>
 <div class="container" *ngIf="errorMsg" style="text-align: center;color: red;">
     Error {{errorMsg}}
