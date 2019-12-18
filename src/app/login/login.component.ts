@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
+
 import { BasicAuthenticationService, Authenticate } from '../service/basic-authentication.service';
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +11,7 @@ import { BasicAuthenticationService, Authenticate } from '../service/basic-authe
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
 
   username: string = 'user';
   password: string = '';
@@ -18,8 +21,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private basicAuth: BasicAuthenticationService) { }
 
+
   ngOnInit() {
   }
+
 
   handleLogin() {
     this.basicAuth.basicAuthentication(this.username, this.password).subscribe(
@@ -32,5 +37,6 @@ export class LoginComponent implements OnInit {
         this.invalidLogin = true;
       }
     )
+
   }
 }

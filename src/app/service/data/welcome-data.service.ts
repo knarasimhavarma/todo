@@ -19,6 +19,7 @@ export class WelcomeDataService {
     //console.log("Execute Hello World Bean Service");
   }
   executeServiceWithPathVariable(name) {
+
     let authHeaderString=this.basicAuthHandler();
   
     let headers = new HttpHeaders({'Authorization': authHeaderString});
@@ -36,4 +37,5 @@ export class WelcomeDataService {
    // console.log(basicAuthString)
     return basicAuthString;
   }
+
 }
