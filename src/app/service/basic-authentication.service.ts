@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { API_URL } from '../app.constant';
 
 export class Authenticate {
   constructor(message: string) { }
 }
+export const TOKEN ='token'
+export const AUTHENTICATE_USER='authenticaterUser'
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +16,21 @@ export class BasicAuthenticationService {
 
   constructor(private http: HttpClient) { }
   isUserLoggedIn() {
-    let user = sessionStorage.getItem("authenticaterUser");
+    let user = sessionStorage.getItem(AUTHENTICATE_USER);
     return !(user === null)
   }
   getAuthUser() {
     //console.log('getAuthUser()')
-    return sessionStorage.getItem('authenticaterUser')
+    return sessionStorage.getItem(AUTHENTICATE_USER)
   }
   getAuthToken() {
       //console.log('getAuthToken()')
     if (this.getAuthUser())
-      return sessionStorage.getItem('token')
+      return sessionStorage.getItem(TOKEN)
   }
   loggedOut() {
-    sessionStorage.removeItem("authenticaterUser");
-    sessionStorage.removeItem('token')
+    sessionStorage.removeItem(AUTHENTICATE_USER);
+    sessionStorage.removeItem(TOKEN)
   }
   basicAuthentication(username, password) {
     let basicAuthString = 'Basic ' + window.btoa(username + ':' + password);
@@ -35,14 +38,11 @@ export class BasicAuthenticationService {
     let headers = new HttpHeaders({
       'Authorization': basicAuthString
     });
-    return this.http.get<Authenticate>('http://localhost:8080/basic/auth', { headers }).pipe(
+    return this.http.get<Authenticate>(`${API_URL}/basic/auth`, { headers }).pipe(
       map(
         data => {
-          sessionStorage.setItem('authenticaterUser', username)
-          sessionStorage.setItem('token', basicAuthString)
-          console.log(this.getAuthToken() + ' method calls ' + this.getAuthUser())
-          console.log(username + " " + basicAuthString)
-
+          sessionStorage.setItem(AUTHENTICATE_USER, username)
+          sessionStorage.setItem(TOKEN, basicAuthString)
           return data;
         }
       )
