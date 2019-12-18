@@ -50,7 +50,7 @@ export class WelcomeComponent implements OnInit {
     this.errorMsg=error.error.message;
   }
   handleResponse(response) {
-    this.user=response;
+    this.authenticate=response;
     console.log(this.user);
   }
 }

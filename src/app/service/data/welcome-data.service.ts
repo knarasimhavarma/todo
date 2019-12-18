@@ -19,23 +19,23 @@ export class WelcomeDataService {
     //console.log("Execute Hello World Bean Service");
   }
   executeServiceWithPathVariable(name) {
-    //let authHeaderString=this.basicAuthHandler();
-    //console.log(authHeaderString)
-    //let headers = new HttpHeaders({Authorization: authHeaderString});
-    //   {
-    //   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-    // });
+
+    let authHeaderString=this.basicAuthHandler();
+  
+    let headers = new HttpHeaders({'Authorization': authHeaderString});
+      
    // headers.set('Authorization', 'authHeaderString');
     //headers.set('Access-Control-Allow-Origin','http://127.0.0.1:8080')
   //  console.log(headers)
-    return this.http.get<Authenticate>(`http://localhost:8080/basic/auth`);
+    return this.http.get<Authenticate>(`http://localhost:8080/basic/auth`,{headers});
   }
 
-  // basicAuthHandler(){
-  //   let username='user'
-  //   let password='password'
-  //   let basicAuthString='Basic '+ window.btoa( username+':'+ password)
-  //  // console.log(basicAuthString)
-  //   return basicAuthString;
-  // }
+  basicAuthHandler(){
+    let username='user'
+    let password='user'
+    let basicAuthString='Basic '+ window.btoa( username+':'+ password)
+   // console.log(basicAuthString)
+    return basicAuthString;
+  }
+
 }

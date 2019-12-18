@@ -5,6 +5,8 @@
 </div>
 
 <div class="container">
+    <h4 *ngIf='authenticate' class="alert-success">{{authenticate.message}}</h4>
+
     click here You will get customized message
     <button (click)="getServiceWithPathVariable()" class="btn btn-success">Message</button>
 </div>
