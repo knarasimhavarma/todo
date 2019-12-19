@@ -48,5 +48,21 @@ export class BasicAuthenticationService {
       )
     )
   }
+
+  jwtAuthentication(username, password) {
+  
+    return this.http.post<any>(`${API_URL}/authenticate`,{
+      username,
+      password
+    }).pipe(
+      map(
+        data => {
+          sessionStorage.setItem(AUTHENTICATE_USER, username)
+          sessionStorage.setItem(TOKEN, `Bearer ${data.token}`)
+          return data;
+        }
+      )
+    )
+  }
  
 }
