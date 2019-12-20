@@ -57,6 +57,7 @@ export class BasicAuthenticationService {
     }).pipe(
       map(
         data => {
+          console.log('jwtAuthentication')
           sessionStorage.setItem(AUTHENTICATE_USER, username)
           sessionStorage.setItem(TOKEN, `Bearer ${data.token}`)
           return data;
